@@ -1,0 +1,20 @@
+
+{% block content %}
+    <h1>Job List</h1>
+
+    <form method='GET' action="{% url 'find_jobs' %}">
+        <label for="skills">Enter your unfamiliar skills, separated by commas:</label>
+        <input type="text" id="skills" name="skills">
+        <input type="submit" value="Find Jobs">
+    <ul>
+        {% for job in jobs %}
+        <li>
+            <strong>{{job.company_name}}</strong> - {{job.skills}}
+            <br>
+            More info: <a href="{{job.more_info}}">Link</a>
+        </li>
+        {% empty %}
+        <li>No jobs found</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
